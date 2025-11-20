@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carpentier — Arquitectura & Diseño</title>
+  <meta name="description" content="CARPENTIER: Arquitectura, diseño interior y construcción premium. Espacios hechos a medida con precisión, elegancia y visión moderna." />
+  <meta name="keywords" content="arquitectura, diseño interior, construcción, carpentier, estudios de arquitectura, reformas, diseño premium" />
+
+  <style>
+    :root {
+      --gold: #d8c29e;
+      --black: #0c0c0c;
+      --dark: #1a1a1a;
+      --light: #f5f5f5;
+      --max-width: 1200px;
+      --font-primary: "Inter", sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--light);
+      font-family: var(--font-primary);
+      line-height: 1.6;
+    }
+
+    header {
+      width: 100%;
+      padding: 25px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--black);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--gold);
+    }
+
+    nav a {
+      color: var(--light);
+      margin-left: 25px;
+      text-decoration: none;
+      font-size: 15px;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--gold);
+    }
+
+    .hero {
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 0 20px;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.6), var(--black)), url('hero.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero h1 {
+      font-size: 58px;
+      max-width: 900px;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      max-width: 750px;
+      opacity: 0.9;
+    }
+
+    section {
+      padding: 80px 20px;
+      max-width: var(--max-width);
+      margin: auto;
+    }
+
+    .title {
+      font-size: 38px;
+      margin-bottom: 25px;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 40px;
+    }
+
+    .service-box {
+      padding: 25px;
+      background: var(--dark);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .service-box:hover {
+      transform: translateY(-6px);
+    }
+
+    footer {
+      padding: 50px;
+      text-align: center;
+      background: var(--dark);
+      margin-top: 40px;
+    }
+    /* Gallery Wipe premium effect */
+  .wipe {
+    position: relative;
+    overflow: hidden;
+  }
+  .wipe::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gold);
+    transform: translateX(0%);
+    transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+    z-index: 2;
+  }
+  .wipe.loaded::before {
+    transform: translateX(100%);
+  }
+  </style>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    /* Parallax premium */
+    .hero.parallax {
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+    }
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.9s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">CARPENTIER</div>
+    <nav>
+      <a href="#servicios">Servicios</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="hero parallax">
+    <h1>Arquitectura y diseño que elevan tu vida.</h1>
+    <p>Estudio premium especializado en diseñar y construir espacios únicos, creados a la medida de tu visión.</p>
+  </section>
+
+  <section id="servicios">
+    <h2 class="title">Servicios</h2>
+    <div class="services">
+
+      <div class="service-box">
+        <h3>Arquitectura</h3>
+        <p>Diseño inteligente, elegante y funcional para proyectos residenciales y comerciales.</p>
+      </div>
+
+      <div class="service-box">
+        <h3>Diseño Interior</h3>
+        <p>Transformación estética y espacial que redefine cómo vives cada día.</p>
+      </div>
+
+      <div class="service-box">
+        <h3>Construcción</h3>
+        <p>Ejecución precisa y premium, con acabados impecables y control total del proyecto.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    © 2025 CARPENTIER — Todos los derechos reservados.
+  </footer>
+
+  <script>
+    const elements = document.querySelectorAll('.reveal');
+    const revealOnScroll = () => {
+      elements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) el.classList.add('visible');
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+  </script>
+  <script>
+    /* Scroll reveal básico */
+    const elements = document.querySelectorAll('.reveal');
+    const revealOnScroll = () => {
+      elements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) el.classList.add('visible');
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+
+    /* Gallery Wipe — premium OMA/BIG/Zaha */
+    const wipeSections = document.querySelectorAll('.wipe');
+    const wipeObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('loaded');
+        }
+      });
+    }, { threshold: 0.35 });
+
+    wipeSections.forEach(sec => wipeObserver.observe(sec));
+  </script>
+</body>
+</html>
